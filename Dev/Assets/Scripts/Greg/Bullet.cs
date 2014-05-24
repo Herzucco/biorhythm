@@ -15,7 +15,9 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		if (moveBySpeed == true)
 		this.speed = this.GetComponent<VisGameObjectPropertyModifier>().returnedValue;
-		this.transform.Translate (Vector3.right * speed * Time.deltaTime, Space.Self);
+
+		this.transform.Translate (Vector3.up * speed * Time.deltaTime, Space.Self);
+
 		if (this.transform.position.x >= xMax)
 		{
 			Destroy(this.gameObject);
