@@ -183,6 +183,12 @@
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+ <Reference Include="VisualizerStudioEditor">
+ <HintPath>Assets\VisualizerStudio\Editor\VisualizerStudioEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="VisualizerStudio">
+ <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -200,12 +206,6 @@
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="VisualizerStudioEditor">
- <HintPath>Assets\VisualizerStudio\Editor\VisualizerStudioEditor.dll</HintPath>
- </Reference>
- <Reference Include="VisualizerStudio">
- <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_0;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_4;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +185,71 @@
      <Compile Include="Assets\Scripts\JoiningPattern.cs" />
      <Compile Include="Assets\Scripts\MagnetPattern.cs" />
      <Compile Include="Assets\Scripts\SpawnChromosomes.cs" />
+     <Compile Include="Assets\VisualizerStudio\Example Level\KillTimer.cs" />
+     <Compile Include="Assets\VisualizerStudio\Example Level\TestBallSpawnScalar.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Base\VisBasePropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Base\VisBasePropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Controllers\VisFrequencyController.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Controllers\VisRandomController.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Controllers\VisSineWaveController.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisAnimationStatePropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisEmitterPropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisGameObjectPropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisLightPropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisMaterialLerpModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisMaterialPropertyModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Modifiers\VisTargetModifier.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisAddForceTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisAnimationStatePropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisEmitParticlesTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisEmitterPropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisGameObjectPropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisLightPropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisMaterialLerpTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisMaterialPropertyTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisMessageTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisSpawnPrefabTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Triggers\VisTargetTrigger.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Utility\VisMicrophone.cs" />
+     <Compile Include="Assets\VisualizerStudio\Scripts\Utility\VisPropertyHelper.cs" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\NGUI\ReadMe - 3.5.6.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\VisualizerStudio\Editor\VisualizerStudioEditor.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\VisualizerStudio\Scripts\VisualizerStudio.xml" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+ <Reference Include="VisualizerStudio">
+ <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
