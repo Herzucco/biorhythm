@@ -17,7 +17,7 @@ public class MagnetPattern : MonoBehaviour {
 		anchors = new List<Vector2>();
 		AddUp();
 		AddDown();
-		Debug.Log(anchor);
+		Debug.Log(anchors);
 		StartCoroutine(FindTarget());
 	}
 	
