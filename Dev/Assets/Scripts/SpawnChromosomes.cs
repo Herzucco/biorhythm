@@ -26,7 +26,7 @@ public class SpawnChromosomes : MonoBehaviour {
 		magnet.id = nbChromosomes++;
 		magnet.otherChromosomes = chromosomes;
 		magnet.speed = Random.Range(5, 10);
-		magnet.leadCapacity = Random.Range(0, 100);
+		magnet.leadCapacity = Random.Range(5, 20);
 
 		chromosomes.Add(magnet);
 	}
@@ -34,7 +34,7 @@ public class SpawnChromosomes : MonoBehaviour {
 	IEnumerator CheckChromosomes() {
 		for(int i =0; i < chromosomes.Count; i++){
 			MagnetPattern chromosome = chromosomes[i];
-			if(chromosome.isAttached){
+			if(chromosome.isAttached || chromosome.isFull){
 				chromosomes.RemoveAt(i);
 				i--;
 			}

@@ -15,6 +15,7 @@ public class MagnetPattern : MonoBehaviour {
 	public MagnetPattern leader;
 	public List<MagnetPattern> leaded;
 	private MagnetPattern targetChromosome;
+	public bool isFull;
 	public List<MagnetPattern> otherChromosomes;
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,12 @@ public class MagnetPattern : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(targetChromosome && !isAttached){
+		if(leaded.Count >= leadCapacity){
+			isFull = true;
+		} else{
+			isFull = false;
+		}
+		if(targetChromosome && !isAttached && !isFull){
 			float step = speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
 		}
@@ -41,7 +47,7 @@ public class MagnetPattern : MonoBehaviour {
 		float distance = 0;
 		foreach (MagnetPattern chromosome in otherChromosomes){
 			float chromosomeDistance = Vector3.Distance(transform.position, chromosome.gameObject.transform.position);;
-			if(chromosome.id != id && (distance == 0 || distance > chromosomeDistance)){
+			if(chromosome.id != id && (distance == 0 || distance > chromosomeDistance) && !chromosome.isFull){
 				distance = chromosomeDistance;
 				targetChromosome = chromosome;
 				continue;
@@ -64,7 +70,7 @@ public class MagnetPattern : MonoBehaviour {
 	public void reachingOther(GameObject other, Detector detector){
 		MagnetPattern otherMagnet = other.gameObject.GetComponent<MagnetPattern>();
 		if(!isAttached){
-			if(!otherMagnet.isAttached && 
+			if(!otherMagnet.isAttached &&
 			    (leadCapacity < otherMagnet.leadCapacity ||
 			     (otherMagnet.isLeading && leadCapacity == otherMagnet.leadCapacity))){
 				JoiningPattern join = gameObject.GetComponent<JoiningPattern>();
@@ -78,7 +84,7 @@ public class MagnetPattern : MonoBehaviour {
 				}
 				isLeading = false;
 				leader = otherMagnet;
-				//detector.enabled = false;
+				detector.enabled = false;
 				StartCoroutine("Attach");
 			}
 			else if(!otherMagnet.isAttached){
@@ -87,7 +93,7 @@ public class MagnetPattern : MonoBehaviour {
 			}
 		}else{
 			if(!leader.isInOurGroup(otherMagnet)){
-				leader.reachingOther(other, detector);
+				//leader.reachingOther(other, detector);
 			}
 		}
 	}
@@ -97,6 +103,7 @@ public class MagnetPattern : MonoBehaviour {
 			other.leaded.Add(leaded[i]);
 			leaded[i].leader = other;
 		}
+		Debug.Log(other.leaded.Count+" "+other.leadCapacity);
 		leaded.Clear();
 	}
 
