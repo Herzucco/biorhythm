@@ -17,10 +17,10 @@ public class Bullet : MonoBehaviour {
 		this.speed = this.GetComponent<VisGameObjectPropertyModifier>().returnedValue;
 
 		this.transform.Translate (Vector3.up * speed * Time.deltaTime, Space.Self);
+	}
 
-		if (this.transform.position.x >= xMax)
-		{
+	void OnTriggerEnter2D(Collider2D other)
+	{
 			Destroy(this.gameObject);
-		}
 	}
 }
