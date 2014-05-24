@@ -24,10 +24,5 @@ public class Gun : MonoBehaviour {
 			this.timer -= this.delay;
 			Instantiate(this.bullet, this.transform.position, this.transform.rotation);
 		}
-
-		if (Input.GetKey("space"))
-		{
-
-		}
 	}
 }
