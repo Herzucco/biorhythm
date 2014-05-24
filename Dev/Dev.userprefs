@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MagnetPattern.cs">
+    <Files>
+      <File FileName="Assets/Scripts/MagnetPattern.cs" Line="95" Column="29" />
+      <File FileName="Assets/Scripts/JoiningPattern.cs" Line="14" Column="30" />
+      <File FileName="Assets/Scripts/Detector.cs" Line="18" Column="43" />
+      <File FileName="Assets/Scripts/SpawnChromosomes.cs" Line="39" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

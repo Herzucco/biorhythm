@@ -15,9 +15,7 @@ public class Detector : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Chromosome"){
-			parent.reachingOther(other.gameObject);
-			gameObject.SetActive(false);
-			enabled = false;
+			parent.reachingOther(other.gameObject, this);
 		}
 	}
 }

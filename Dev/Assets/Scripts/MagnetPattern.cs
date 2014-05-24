@@ -1,29 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System; //This allows the IComparable Interface
 using System.Collections.Generic;
 
 public class MagnetPattern : MonoBehaviour {
 	public float speed;
 	public float cooldown;
 	public int leadCapacity;
-	public List<Vector2> anchors;
+	public List<GameObject> anchors;
 
+	public bool isLeading;
+	public bool isAttached;
+	public int id;
+
+	public MagnetPattern leader;
+	public List<MagnetPattern> leaded;
 	private MagnetPattern targetChromosome;
 	public List<MagnetPattern> otherChromosomes;
 	// Use this for initialization
 	void Start () {
-		//otherChromosomes = new List<MagnetPattern>();
-		anchors = new List<Vector2>();
+		anchors = new List<GameObject>();
+		leaded = new List<MagnetPattern>();
 		AddUp();
 		AddDown();
-		Debug.Log(anchor);
 		StartCoroutine(FindTarget());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(targetChromosome){
+		if(targetChromosome && !isAttached){
 			float step = speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
 		}
@@ -37,40 +41,79 @@ public class MagnetPattern : MonoBehaviour {
 		float distance = 0;
 		foreach (MagnetPattern chromosome in otherChromosomes){
 			float chromosomeDistance = Vector3.Distance(transform.position, chromosome.gameObject.transform.position);;
-			if(distance == 0 || distance > chromosomeDistance){
+			if(chromosome.id != id && (distance == 0 || distance > chromosomeDistance)){
 				distance = chromosomeDistance;
 				targetChromosome = chromosome;
 				continue;
 			}
 		}
 		yield return new WaitForSeconds(cooldown);
+		StartCoroutine("FindTarget");
 	}
 	
 	void AddUp(){
 		GameObject up = transform.Find("Up").gameObject;
-		Vector3 position = up.transform.localPosition;
-		Vector2 anch = new Vector2(position.x, position.y);
-		anchors.Add(anch);
+		anchors.Add(up);
 	}
 	
 	void AddDown(){
 		GameObject down = transform.Find("Down").gameObject;
-		Vector3 position = down.transform.localPosition;
-		Vector2 anch = new Vector2(position.x, position.y);
-		anchors.Add(anch);
+		anchors.Add(down);
 	}
 
-	public void reachingOther(GameObject other){
+	public void reachingOther(GameObject other, Detector detector){
 		MagnetPattern otherMagnet = other.gameObject.GetComponent<MagnetPattern>();
-		gameObject.GetComponent<MagnetPattern>().enabled = false;
-		if(leadCapacity <= otherMagnet.leadCapacity){
-			JoiningPattern join = gameObject.GetComponent<JoiningPattern>();
-			join.enabled = true;
-			join.MakeJoin(anchors, otherMagnet.anchors, other.gameObject.rigidbody2D);
-			//reach up;
+		if(!isAttached){
+			if(!otherMagnet.isAttached && 
+			    (leadCapacity < otherMagnet.leadCapacity ||
+			     (otherMagnet.isLeading && leadCapacity == otherMagnet.leadCapacity))){
+				JoiningPattern join = gameObject.GetComponent<JoiningPattern>();
+				join.enabled = true;
+				if(otherMagnet.leaded.Count > 0){
+					int count = otherMagnet.leaded.Count;
+					MagnetPattern lastLeaded = otherMagnet.leaded[count-(Random.Range(1, count))];
+					join.MakeJoin(anchors, lastLeaded.anchors, lastLeaded.gameObject.rigidbody2D, lastLeaded.transform);
+				}else{
+					join.MakeJoin(anchors, otherMagnet.anchors, other.gameObject.rigidbody2D, other.transform);
+				}
+				isLeading = false;
+				leader = otherMagnet;
+				//detector.enabled = false;
+				StartCoroutine("Attach");
+			}
+			else if(!otherMagnet.isAttached){
+				isLeading = true;
+				isAttached = false;
+			}
+		}else{
+			if(!leader.isInOurGroup(otherMagnet)){
+				leader.reachingOther(other, detector);
+			}
 		}
-		else{
-			//be leader;
+	}
+
+	private void ClearLeaded(MagnetPattern other){
+		for(int i = 0; i < leaded.Count; i++){
+			other.leaded.Add(leaded[i]);
+			leaded[i].leader = other;
 		}
+		leaded.Clear();
+	}
+
+	public bool isInOurGroup(MagnetPattern other){
+		if(other.id == id)return true;
+		for(int i = 0; i < leaded.Count; i++){
+			if(leaded[i].id == other.id){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	IEnumerator Attach() {
+		yield return new WaitForSeconds(0.1f);
+		isAttached = true;
+		leader.leaded.Add(this);
+		ClearLeaded(leader);
 	}
 }
