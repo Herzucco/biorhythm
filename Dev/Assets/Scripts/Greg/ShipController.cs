@@ -58,6 +58,7 @@ public class ShipController : MonoBehaviour {
 
 		if (gamepadList.Length == 0)
 		{
+			this.rigidbody2D.transform.Translate(xMove, yMove, 0, Space.World);
 			Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 			diff.Normalize();
 			float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;

@@ -26,7 +26,7 @@ public class SpawnChromosomes : MonoBehaviour {
 		MagnetPattern magnet = chromosome.GetComponent<MagnetPattern>() ;
 		magnet.id = nbChromosomes++;
 		magnet.otherChromosomes = chromosomes;
-		magnet.speed = Random.Range(5, 15);
+		magnet.speed = Random.Range(1, 10);
 		magnet.leadCapacity = Random.Range(5, 20);
 		magnet.player = player;
 
@@ -46,11 +46,13 @@ public class SpawnChromosomes : MonoBehaviour {
 	}
 
 	IEnumerator SpawnManagement() {
-		float x = Random.Range(area.xMin, area.xMax);
-		float y = Random.Range(area.yMin, area.yMax);
-
-		Vector3 position = new Vector3(x, y, 0.0f);
-		SpawnChromosome(position);
+		if(player){
+			float x = Random.Range(player.transform.position.x-20, player.transform.position.x+20);
+			float y = Random.Range(player.transform.position.y-20, player.transform.position.y+20);
+			
+			Vector3 position = new Vector3(x, y, 0.0f);
+			SpawnChromosome(position);
+		}
 
 		yield return new WaitForSeconds(cooldown);
 

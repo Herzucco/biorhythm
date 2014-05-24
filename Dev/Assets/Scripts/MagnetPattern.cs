@@ -18,14 +18,18 @@ public class MagnetPattern : MonoBehaviour {
 	public bool isFull;
 	public List<MagnetPattern> otherChromosomes;
 	public GameObject player;
+	public bool isDead;
+	private Vector3 target;
 
 	// Use this for initialization
 	void Start () {
+		isDead = false;
 		anchors = new List<GameObject>();
 		leaded = new List<MagnetPattern>();
 		AddUp();
 		AddDown();
 		StartCoroutine(FindTarget());
+		target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 	}
 	
 	// Update is called once per frame
@@ -35,12 +39,17 @@ public class MagnetPattern : MonoBehaviour {
 		} else{
 			isFull = false;
 		}
+
 		if(targetChromosome && !isAttached && !isFull){
 			float step = speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
-		} else{
+		} else if(player){
+			float distance = Vector3.Distance(transform.position, player.transform.position);
+			if(distance <= 10.0f){
+				target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+			}
 			float step = speed * Time.deltaTime;
-			transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+			transform.position = Vector3.MoveTowards(transform.position, target, step);
 		}
 	}
 
@@ -51,11 +60,13 @@ public class MagnetPattern : MonoBehaviour {
 	IEnumerator FindTarget() {
 		float distance = 0;
 		foreach (MagnetPattern chromosome in otherChromosomes){
-			float chromosomeDistance = Vector3.Distance(transform.position, chromosome.gameObject.transform.position);
-			if(chromosome.id != id && (distance == 0 || distance > chromosomeDistance) && !chromosome.isFull){
-				distance = chromosomeDistance;
-				targetChromosome = chromosome;
-				continue;
+			if(chromosome){
+				float chromosomeDistance = Vector3.Distance(transform.position, chromosome.gameObject.transform.position);
+				if(chromosome.id != id && (distance == 0 || distance > chromosomeDistance) && !chromosome.isFull){
+					distance = chromosomeDistance;
+					targetChromosome = chromosome;
+					continue;
+				}
 			}
 		}
 		yield return new WaitForSeconds(cooldown);
@@ -82,8 +93,8 @@ public class MagnetPattern : MonoBehaviour {
 				join.enabled = true;
 				if(otherMagnet.leaded.Count > 0){
 					int count = otherMagnet.leaded.Count;
-					MagnetPattern lastLeaded = otherMagnet.leaded[count-(Random.Range(1, count))];
-					join.MakeJoin(anchors, lastLeaded.anchors, lastLeaded.gameObject.rigidbody2D, lastLeaded.transform);
+					MagnetPattern lastLeaded = otherMagnet.leaded[count-(Random.Range(1, 1))];
+					if(lastLeaded) join.MakeJoin(anchors, lastLeaded.anchors, lastLeaded.gameObject.rigidbody2D, lastLeaded.transform);
 				}else{
 					join.MakeJoin(anchors, otherMagnet.anchors, other.gameObject.rigidbody2D, other.transform);
 				}
@@ -120,6 +131,35 @@ public class MagnetPattern : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	public void AlertDying(){
+		List<MagnetPattern> group;
+		if(isLeading){
+			group = leaded;
+			for(int i = 1; i < group.Count; i++){
+				group[0].leaded.Add(group[i]);
+				group[i].leader = group[0];
+			}
+		}
+		else if(isAttached){
+			group = leader.leaded;
+			for(int i = 0; i < group.Count; i++){
+				if(group[i].id == id){
+					group.RemoveAt(i);
+					break;
+				}
+			}
+		}
+		if(!isAttached){
+			for(int i = 0; i < otherChromosomes.Count; i++){
+				if(otherChromosomes[i].id == id){
+					otherChromosomes.RemoveAt(i);
+					break;
+				}
+			}
+		}
+		GameObject.Destroy(gameObject);
 	}
 
 	IEnumerator Attach() {
