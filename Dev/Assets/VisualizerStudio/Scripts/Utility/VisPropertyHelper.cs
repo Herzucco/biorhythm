@@ -86,7 +86,9 @@ public enum GameObjectProperty
 	/// <summary>
 	/// The game object z scale. 
 	/// </summary>
-	ZScale
+	ZScale,
+
+	Nothing
 }
 
 public enum EmitterProperty
@@ -260,6 +262,8 @@ public static class VisPropertyHelper
 							                                   	  gameObject.transform.localScale.y, 
 							                                   	  propertyValue);
                 break;
+			case GameObjectProperty.Nothing:
+				break;
             default:
                 break;
         }

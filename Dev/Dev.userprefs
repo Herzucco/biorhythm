@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Bullet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VisualizerStudio\Scripts\Triggers\VisGameObjectPropertyTrigger.cs">
     <Files>
-      <File FileName="Assets\Scripts\MagnetPattern.cs" Line="77" Column="1" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="12" Column="11" />
+      <File FileName="Assets\Scripts\Greg\Gun.cs" Line="27" Column="4" />
+      <File FileName="Assets\Scripts\Greg\Bullet.cs" Line="19" Column="4" />
+      <File FileName="Assets\VisualizerStudio\Scripts\Modifiers\VisGameObjectPropertyModifier.cs" Line="39" Column="28" />
+      <File FileName="Assets\VisualizerStudio\Scripts\Triggers\VisGameObjectPropertyTrigger.cs" Line="40" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

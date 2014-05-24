@@ -36,6 +36,7 @@ public class VisGameObjectPropertyModifier : VisBasePropertyModifier
 	/// </summary>
     //[HideInInspector()]
 	public GameObjectProperty targetProperty = Defaults.targetProperty;
+	public float returnedValue;
 	
 	#endregion
 	
@@ -72,6 +73,8 @@ public class VisGameObjectPropertyModifier : VisBasePropertyModifier
     public override void SetProperty(float propertyValue)
     {
         VisPropertyHelper.SetGameObjectProperty(gameObject, targetProperty, propertyValue);
+		returnedValue = propertyValue;
+		//Debug.Log(returnedValue);
     }
 
     #endregion
