@@ -181,6 +181,7 @@
      <Compile Include="Assets\Scripts\Detector.cs" />
      <Compile Include="Assets\Scripts\Greg\Bullet.cs" />
      <Compile Include="Assets\Scripts\Greg\Gun.cs" />
+     <Compile Include="Assets\Scripts\Greg\ShipController.cs" />
      <Compile Include="Assets\Scripts\JoiningPattern.cs" />
      <Compile Include="Assets\Scripts\MagnetPattern.cs" />
      <Compile Include="Assets\VisualizerStudio\Example Level\KillTimer.cs" />
