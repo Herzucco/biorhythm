@@ -19,10 +19,15 @@ public class Gun : MonoBehaviour {
 		this.timer += Time.deltaTime;
 		this.delay = this.GetComponent<VisGameObjectPropertyModifier>().returnedValue;
 
-			if(this.timer >= this.delay)
-			{
-				this.timer -= this.delay;
-				Instantiate(this.bullet, this.transform.position, this.transform.rotation);
-			}
+		if(this.timer >= this.delay)
+		{
+			this.timer -= this.delay;
+			Instantiate(this.bullet, this.transform.position, this.transform.rotation);
+		}
+
+		if (Input.GetKey("space"))
+		{
+
+		}
 	}
 }
