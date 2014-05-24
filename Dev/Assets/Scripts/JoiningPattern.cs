@@ -30,4 +30,8 @@ public class JoiningPattern : MonoBehaviour {
 		join.connectedAnchor = downOther2;
 		join.connectedBody = otherBody;
 	}
+
+	public void UnJoin(){
+		join.enabled = false;
+	}
 }

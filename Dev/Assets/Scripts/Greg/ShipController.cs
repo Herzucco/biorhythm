@@ -15,8 +15,8 @@ public class ShipController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		xMove = Input.GetAxis("Horizontal") * speed;
-		yMove = Input.GetAxis("Vertical") * speed;
+		xMove = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		yMove = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
 		gamepadList = Input.GetJoystickNames();
 

@@ -7,6 +7,7 @@ public class SpawnChromosomes : MonoBehaviour {
 	public List<MagnetPattern> chromosomes;
 	public float cooldown;
 	public Rect area;
+	public GameObject player;
 
 	private int nbChromosomes;
 	// Use this for initialization
@@ -25,8 +26,9 @@ public class SpawnChromosomes : MonoBehaviour {
 		MagnetPattern magnet = chromosome.GetComponent<MagnetPattern>() ;
 		magnet.id = nbChromosomes++;
 		magnet.otherChromosomes = chromosomes;
-		magnet.speed = Random.Range(5, 10);
+		magnet.speed = Random.Range(5, 15);
 		magnet.leadCapacity = Random.Range(5, 20);
+		magnet.player = player;
 
 		chromosomes.Add(magnet);
 	}
@@ -39,7 +41,7 @@ public class SpawnChromosomes : MonoBehaviour {
 				i--;
 			}
 		}
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(1f);
 		StartCoroutine("CheckChromosomes");
 	}
 
