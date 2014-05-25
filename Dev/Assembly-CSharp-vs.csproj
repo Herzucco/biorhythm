@@ -46,6 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Detonator Explosion Framework\System\Detonator.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorBurstEmitter.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorCloudRing.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorFireball.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorForce.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorGlow.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorHeatwave.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorLight.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorShockwave.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSmoke.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
      <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Demo\YourScript.cs" />
      <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Controllers\DirectoryFinderController.cs" />
      <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Models\DirectoryFinder.cs" />
@@ -152,14 +165,20 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Detector.cs" />
      <Compile Include="Assets\Scripts\Greg\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Greg\Explosions.cs" />
      <Compile Include="Assets\Scripts\Greg\FadeMusic.cs" />
+     <Compile Include="Assets\Scripts\Greg\FlareMusic.cs" />
      <Compile Include="Assets\Scripts\Greg\Gun.cs" />
      <Compile Include="Assets\Scripts\Greg\MenuButton.cs" />
      <Compile Include="Assets\Scripts\Greg\ShipController.cs" />
+     <Compile Include="Assets\Scripts\Greg\VideoScript.cs" />
      <Compile Include="Assets\Scripts\JoiningPattern.cs" />
+     <Compile Include="Assets\Scripts\LifeManager.cs" />
      <Compile Include="Assets\Scripts\MagnetPattern.cs" />
+     <Compile Include="Assets\Scripts\PlayerLifeManager.cs" />
      <Compile Include="Assets\Scripts\SpawnChromosomes.cs" />
      <Compile Include="Assets\VisualizerStudio\Example Level\KillTimer.cs" />
      <Compile Include="Assets\VisualizerStudio\Example Level\TestBallSpawnScalar.cs" />
@@ -194,6 +213,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
      <None Include="Assets\VisualizerStudio\Editor\VisualizerStudioEditor.xml" />
@@ -209,9 +229,22 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
      <None Include="Assets\VisualizerStudio\Scripts\VisualizerStudio.xml" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+ <Reference Include="NAudio">
+ <HintPath>Assets\NAudio.dll</HintPath>
+ </Reference>
+ <Reference Include="NAudio.WindowsMediaFormat">
+ <HintPath>Assets\NAudio.WindowsMediaFormat.dll</HintPath>
+ </Reference>
  <Reference Include="VisualizerStudio">
  <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{EA2092F4-959D-364E-D0F9-9EF3A3596AD1}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
