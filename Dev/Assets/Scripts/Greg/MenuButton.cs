@@ -2,23 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime;
-using System.Runtime.InteropServices;
 
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-
-using NAudio;
-using NAudio.Wave;
 public class MenuButton : MonoBehaviour {
 
 	public string levelName;
 	public AudioManager manager;
 	public List<AudioClip> clips;
 	private string[] gamepadList;
-	private IWavePlayer mWaveOutDevice;
-	private WaveStream mMainOutputStream;
-	private WaveChannel32 mVolumeStream;
 	// Use this for initialization
 	void Start () {
 		GameObject otherManager = GameObject.FindGameObjectWithTag("AudioManager");
