@@ -14,10 +14,14 @@ public class Gun : MonoBehaviour {
 	
 	}
 
+	public static float Remap (float value, float from1, float to1, float from2, float to2) {
+		return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		this.timer += Time.deltaTime;
-		this.delay = this.GetComponent<VisGameObjectPropertyModifier>().returnedValue;
+		this.delay = Remap(this.GetComponent<VisGameObjectPropertyModifier>().brutValue, 0f, 1f, 0.5f, 0f);
 
 		if(this.timer >= this.delay)
 		{
