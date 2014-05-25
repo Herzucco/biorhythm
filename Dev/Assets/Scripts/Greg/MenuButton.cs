@@ -9,6 +9,7 @@ public class MenuButton : MonoBehaviour {
 	public AudioSource source;
 	public AudioManager manager;
 	private List<AudioClip> clips;
+	private string[] gamepadList;
 	// Use this for initialization
 	void Start () {
 		clips = new List<AudioClip>();
@@ -18,7 +19,20 @@ public class MenuButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		gamepadList = Input.GetJoystickNames();
+		if (gamepadList.Length > 0)
+		{
+			this.GetComponentInChildren<UILabel>().text = "Press Start";
+			if (Input.GetButton("Start"))
+			{
+				manager.clips = clips;
+				Application.LoadLevel(levelName);
+			}
+		}
+		if (gamepadList.Length == 0)
+		{
+			this.GetComponentInChildren<UILabel>().text = "Start";
+		}
 	}
 
 	void OnClick() {
