@@ -27,7 +27,7 @@ public class MenuButton : MonoBehaviour {
 			this.GetComponentInChildren<UILabel>().text = "Press Start";
 			if (Input.GetButton("Start"))
 			{
-				manager.clips = clips;
+				manager.ChangeMusic();
 				Application.LoadLevel(levelName);
 			}
 		}

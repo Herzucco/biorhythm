@@ -15,6 +15,7 @@ public class ShipController : MonoBehaviour {
 	public VisGameObjectPropertyModifier currentModifier;
 	public float score;
 	public Camera OrthographicCamera;
+	public GUIText ScoreLabel;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +33,7 @@ public class ShipController : MonoBehaviour {
 		posClam.x = Mathf.Clamp(transform.position.x, walls[0].transform.position.x + walls[0].transform.localScale.x, walls[1].transform.position.x - walls[1].transform.localScale.x);
 		posClam.y = Mathf.Clamp(transform.position.y, walls[2].transform.position.y + walls[2].transform.localScale.y, walls[3].transform.position.y - walls[3].transform.localScale.y);
 		this.transform.position = posClam;
-		Debug.Log(score);
+		ScoreLabel.GetComponent<GUIText>().text = "Score :" + " " + score;
 
 	if (gamepadList.Length > 0)
 	{
