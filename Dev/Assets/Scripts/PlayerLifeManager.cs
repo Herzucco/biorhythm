@@ -6,6 +6,7 @@ public class PlayerLifeManager : MonoBehaviour
 	public float life;
 	public PolygonCollider2D collider;
 	public GameObject manager;
+	public GameObject explosion;
 	// Use this for initialization
 	void Start ()
 	{
@@ -15,13 +16,20 @@ public class PlayerLifeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(life <= 0f){
+		if(life <= 0f && life > -100f){
 			StartCoroutine("Reload");
 			gameObject.renderer.enabled = false;
 			collider.enabled = false;
 			ShipController controller = gameObject.GetComponent<ShipController>();
 			controller.currentWeapon.SetActive(false);
 			controller.enabled = false;
+			for(int i = 0; i < 10; i++){
+				float x = Random.Range(gameObject.transform.position.x-1,gameObject.transform.position.x+1);
+				float y = Random.Range(gameObject.transform.position.y-1,gameObject.transform.position.y+1);
+
+				Instantiate(explosion, new Vector3(x, y, 0.0f), gameObject.transform.rotation);
+			}
+			life = -100f;
 		}
 	}
 	
