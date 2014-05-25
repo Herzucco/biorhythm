@@ -4,6 +4,7 @@ using System.Collections;
 public class LifeManager : MonoBehaviour
 {
 	public float life;
+	public GameObject explosion;
 
 	private MagnetPattern magnet;
 	// Use this for initialization
@@ -17,6 +18,7 @@ public class LifeManager : MonoBehaviour
 	{
 		if(life <= 0f){
 			magnet.AlertDying();
+			Instantiate(explosion, this.transform.position, Quaternion.identity);
 		}
 	}
 

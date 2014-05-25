@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
 	{
 		if(clips.Count > 0 && (!source.clip || !source.isPlaying)){
 			source.clip = PickRandom();
+			Debug.Log(clips.Count);
 			source.Play();
 		}
 	}
