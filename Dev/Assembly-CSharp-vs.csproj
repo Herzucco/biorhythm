@@ -46,6 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Demo\YourScript.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Controllers\DirectoryFinderController.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Models\DirectoryFinder.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Models\LogicalVolume.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Views\UIDirectoryFinder.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Views\UIDirectoryFinderButton.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Views\UIDrive.cs" />
+     <Compile Include="Assets\LaraBrothers\DirectoryFinderWidget\Scripts\Views\UIItemF.cs" />
      <Compile Include="Assets\NGUI\Scripts\Interaction\LanguageSelection.cs" />
      <Compile Include="Assets\NGUI\Scripts\Interaction\UIButton.cs" />
      <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonActivate.cs" />
@@ -146,7 +154,9 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scripts\Detector.cs" />
      <Compile Include="Assets\Scripts\Greg\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Greg\FadeMusic.cs" />
      <Compile Include="Assets\Scripts\Greg\Gun.cs" />
+     <Compile Include="Assets\Scripts\Greg\MenuButton.cs" />
      <Compile Include="Assets\Scripts\Greg\ShipController.cs" />
      <Compile Include="Assets\Scripts\JoiningPattern.cs" />
      <Compile Include="Assets\Scripts\MagnetPattern.cs" />
@@ -180,6 +190,7 @@
      <Compile Include="Assets\VisualizerStudio\Scripts\Utility\VisPropertyHelper.cs" />
      <None Include="Assets\NGUI\ReadMe - 3.5.6.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\LaraBrothers\DirectoryFinderWidget\UI\Fonts\Font-Avenir Nextfont_an.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
@@ -192,6 +203,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\LaraBrothers\DirectoryFinderWidget\ReadMe v1.1.1.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
