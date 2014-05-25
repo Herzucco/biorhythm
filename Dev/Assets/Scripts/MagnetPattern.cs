@@ -54,6 +54,15 @@ public class MagnetPattern : MonoBehaviour {
 		}
 	}
 
+	void LateUpdate() {
+		if(playerController.currentModifier.name == "Gun Bass")
+			this.renderer.material.color = Color.red;
+		if(playerController.currentModifier.name == "Gun High")
+			this.renderer.material.color = Color.blue;
+		if(playerController.currentModifier.name == "Gun Mid")
+			this.renderer.material.color = Color.green;
+	}
+
 	public void newChromosome(MagnetPattern chromosome){
 		otherChromosomes.Add(chromosome);
 	}
