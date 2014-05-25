@@ -56,6 +56,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
      <None Include="Assets\VisualizerStudio\Editor\VisualizerStudioEditor.xml" />
@@ -71,6 +72,12 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
      <None Include="Assets\VisualizerStudio\Scripts\VisualizerStudio.xml" />
+ <Reference Include="NAudio">
+ <HintPath>Assets\NAudio.dll</HintPath>
+ </Reference>
+ <Reference Include="NAudio.WindowsMediaFormat">
+ <HintPath>Assets\NAudio.WindowsMediaFormat.dll</HintPath>
+ </Reference>
  <Reference Include="VisualizerStudio">
  <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
  </Reference>

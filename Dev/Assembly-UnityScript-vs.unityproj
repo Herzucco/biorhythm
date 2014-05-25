@@ -72,6 +72,12 @@
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
+ <Reference Include="NAudio">
+ <HintPath>Assets\NAudio.dll</HintPath>
+ </Reference>
+ <Reference Include="NAudio.WindowsMediaFormat">
+ <HintPath>Assets\NAudio.WindowsMediaFormat.dll</HintPath>
+ </Reference>
  <Reference Include="VisualizerStudio">
  <HintPath>Assets\VisualizerStudio\Scripts\VisualizerStudio.dll</HintPath>
  </Reference>
