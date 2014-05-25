@@ -73,5 +73,11 @@ public class VisEmitterPropertyModifier : VisBasePropertyModifier
 		VisPropertyHelper.SetEmitterProperty(particleEmitter, targetProperty, propertyValue);
     }
 
+	public override void SetBrut(float brut)
+	{
+		//brutValue = brut;
+		//Debug.Log(returnedValue);
+	}
+
     #endregion
 }

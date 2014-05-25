@@ -37,6 +37,7 @@ public class VisGameObjectPropertyModifier : VisBasePropertyModifier
     //[HideInInspector()]
 	public GameObjectProperty targetProperty = Defaults.targetProperty;
 	public float returnedValue;
+	public float brutValue;
 	
 	#endregion
 	
@@ -74,8 +75,15 @@ public class VisGameObjectPropertyModifier : VisBasePropertyModifier
     {
         VisPropertyHelper.SetGameObjectProperty(gameObject, targetProperty, propertyValue);
 		returnedValue = propertyValue;
+		brutValue = brutValue;
 		//Debug.Log(returnedValue);
     }
+
+	public override void SetBrut(float brut)
+	{
+		brutValue = brut;
+		//Debug.Log(returnedValue);
+	}
 
     #endregion
 }

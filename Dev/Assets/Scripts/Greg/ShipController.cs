@@ -12,6 +12,7 @@ public class ShipController : MonoBehaviour {
 	public GameObject highWeapon;
 	public GameObject midWeapon;
 	public GameObject[] walls;
+	public VisGameObjectPropertyModifier currentModifier;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +21,9 @@ public class ShipController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		xMove = Input.GetAxis("Horizontal") * speed;
-		yMove = Input.GetAxis("Vertical") * speed;
-
+		xMove = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		yMove = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		currentModifier = currentWeapon.GetComponent<VisGameObjectPropertyModifier>();
 		gamepadList = Input.GetJoystickNames();
 		Vector2 posClam = transform.position;
 		posClam.x = Mathf.Clamp(transform.position.x, walls[0].transform.position.x + walls[0].transform.localScale.x, walls[1].transform.position.x - walls[1].transform.localScale.x);
@@ -87,6 +88,7 @@ public class ShipController : MonoBehaviour {
 			if (Input.GetButton("Bass Weapon"))
 			{
 				currentWeapon = bassWeapon;
+				currentModifier = bassWeapon.GetComponent<VisGameObjectPropertyModifier>();
 				midWeapon.GetComponent<Gun>().enabled = false;
 				highWeapon.GetComponent<Gun>().enabled = false;
 				this.GetComponent<Light>().color = Color.red;
@@ -94,6 +96,7 @@ public class ShipController : MonoBehaviour {
 			if (Input.GetButton("High Weapon"))
 			{
 				currentWeapon = highWeapon;
+				currentModifier = highWeapon.GetComponent<VisGameObjectPropertyModifier>();
 				bassWeapon.GetComponent<Gun>().enabled = false;
 				midWeapon.GetComponent<Gun>().enabled = false;
 				this.GetComponent<Light>().color = Color.blue;
@@ -101,6 +104,7 @@ public class ShipController : MonoBehaviour {
 			if (Input.GetButton("Mid Weapon"))
 			{
 				currentWeapon = midWeapon;
+				currentModifier = midWeapon.GetComponent<VisGameObjectPropertyModifier>();
 				bassWeapon.GetComponent<Gun>().enabled = false;
 				highWeapon.GetComponent<Gun>().enabled = false;
 				this.GetComponent<Light>().color = Color.green;

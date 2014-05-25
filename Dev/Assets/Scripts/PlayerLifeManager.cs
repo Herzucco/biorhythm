@@ -18,6 +18,7 @@ public class PlayerLifeManager : MonoBehaviour
 			StartCoroutine("Reload");
 			gameObject.renderer.enabled = false;
 			collider.enabled = false;
+			gameObject.GetComponent<ShipController>().enabled = false;
 		}
 	}
 	

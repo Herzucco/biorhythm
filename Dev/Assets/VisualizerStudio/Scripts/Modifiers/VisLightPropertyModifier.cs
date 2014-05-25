@@ -73,6 +73,11 @@ public class VisLightPropertyModifier : VisBasePropertyModifier
         VisPropertyHelper.SetLightProperty(light, targetProperty, propertyValue);
     }
 
+	public override void SetBrut(float brut)
+	{
+		//brutValue = brut;
+		//Debug.Log(returnedValue);
+	}
     #endregion
 }
 

@@ -73,6 +73,11 @@ public class VisMaterialLerpModifier : VisBasePropertyModifier
 		}
     }
 
+	public override void SetBrut(float brut)
+	{
+		//brutValue = brut;
+		//Debug.Log(returnedValue);
+	}
     #endregion
 }
 

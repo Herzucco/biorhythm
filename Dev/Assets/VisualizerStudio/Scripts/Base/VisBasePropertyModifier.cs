@@ -148,6 +148,7 @@ public abstract class VisBasePropertyModifier : VisBaseModifier
 
         //call to abstract function to set the property
         SetProperty(propertyValue);
+		SetBrut(value);
     }
 
     #endregion
@@ -161,6 +162,8 @@ public abstract class VisBasePropertyModifier : VisBaseModifier
     /// </summary>
     /// <param name="propertyValue">The new value to set the property to.</param>
     public abstract void SetProperty(float propertyValue);
+
+	public abstract void SetBrut(float brut);
 
     #endregion
 }

@@ -86,6 +86,8 @@ public class VisAnimationStatePropertyTrigger : VisBasePropertyTrigger
 		}
     }
 
+
+
     #endregion
 }
 

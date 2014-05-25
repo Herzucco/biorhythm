@@ -26,7 +26,7 @@ public class SpawnChromosomes : MonoBehaviour {
 		MagnetPattern magnet = chromosome.GetComponent<MagnetPattern>() ;
 		magnet.id = nbChromosomes++;
 		magnet.otherChromosomes = chromosomes;
-		magnet.speed = Random.Range(1, 10);
+		magnet.speed = Random.Range(2, 4);
 		magnet.leadCapacity = Random.Range(5, 20);
 		magnet.player = player;
 

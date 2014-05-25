@@ -212,7 +212,7 @@ public class VisTargetModifier : VisBaseModifier
 		                 Controller.GetValueDifference(),
 		                 Controller.GetAdjustedValueDifference());
 	}
-	
+
 	#endregion
 }
 

@@ -20,10 +20,11 @@ public class MagnetPattern : MonoBehaviour {
 	public GameObject player;
 	public bool isDead;
 	private Vector3 target;
-
+	private ShipController playerController;
 	// Use this for initialization
 	void Start () {
 		isDead = false;
+		playerController = player.GetComponent<ShipController>();
 		anchors = new List<GameObject>();
 		leaded = new List<MagnetPattern>();
 		AddUp();
@@ -40,15 +41,15 @@ public class MagnetPattern : MonoBehaviour {
 			isFull = false;
 		}
 
-		if(targetChromosome && !isAttached && !isFull){
-			float step = speed * Time.deltaTime;
+		if(targetChromosome && !isAttached && !isFull && playerController.currentModifier){
+			float step = speed * playerController.currentModifier.brutValue * 10 * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
-		} else if(player){
+		} else if(player && playerController.currentModifier){
 			float distance = Vector3.Distance(transform.position, player.transform.position);
 			if(distance <= 10.0f){
 				target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 			}
-			float step = speed * Time.deltaTime;
+			float step = speed * playerController.currentModifier.brutValue * 10 * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
 		}
 	}
