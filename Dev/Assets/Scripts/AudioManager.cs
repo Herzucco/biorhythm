@@ -16,16 +16,7 @@ public class AudioManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		GameObject[] otherManagers = GameObject.FindGameObjectsWithTag("AudioManager");
-		foreach(GameObject otherManager in otherManagers){
-			if(otherManager){
-				AudioManager manager = otherManager.GetComponent<AudioManager>();
-				if(manager.id != id){
-					clips = manager.clips;
-					Destroy(otherManager);
-				}
-			}
-		}
+
 	}
 
 	// Update is called once per frame
@@ -43,6 +34,7 @@ public class AudioManager : MonoBehaviour
 	}
 
 	public void ChangeMusic(){
+		source.Stop();
 		source.clip = PickRandom();
 		source.Play();
 	}

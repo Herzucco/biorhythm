@@ -2,20 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime;
+using System.Runtime.InteropServices;
 
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+
+using NAudio;
+using NAudio.Wave;
 public class MenuButton : MonoBehaviour {
 
 	public string levelName;
-	public AudioSource source;
 	public AudioManager manager;
-	private List<AudioClip> clips;
+	public List<AudioClip> clips;
 	private string[] gamepadList;
+	private IWavePlayer mWaveOutDevice;
+	private WaveStream mMainOutputStream;
+	private WaveChannel32 mVolumeStream;
 	// Use this for initialization
 	void Start () {
-		if(manager.clips.Count <= 0){
+		GameObject otherManager = GameObject.FindGameObjectWithTag("AudioManager");
+		if(!otherManager){
+			otherManager =  (GameObject)Instantiate(manager.gameObject);
 			clips = new List<AudioClip>();
+			manager = otherManager.GetComponent<AudioManager>();
 			manager.clips = clips;
 			GetMusics();
+		} else{
+			manager = otherManager.GetComponent<AudioManager>();
 		}
 	}
 	
@@ -73,16 +87,46 @@ public class MenuButton : MonoBehaviour {
 	IEnumerator LoadFile(string path)
 	{
 		WWW www = new WWW("file://" + path);
-		Debug.Log("loading " + path);
-		
-		AudioClip clip = www.GetAudioClip(false);
+		AudioClip clip;
+		clip = www.GetAudioClip(false);
+
 		while(!clip.isReadyToPlay)
 			yield return www;
 		
-		Debug.Log("done loading");
-
 		clip.name = Path.GetFileName(path);
 		clips.Add(clip);
-		Debug.Log(clips.Count);
 	}
+
+//	IEnumerator LoadMP3(string path)
+//	{
+//		WWW www = new WWW("file://" + path);
+//		Debug.Log("loading " + path);
+//
+//		byte[] imageData = www.bytes;
+//		LoadAudioFromData(imageData);
+//		
+//		mWaveOutDevice.Play();
+//		yield return www;
+//	}
+//
+//	private bool LoadAudioFromData(byte[] data)
+//	{
+//		try
+//		{
+//			MemoryStream tmpStr = new MemoryStream(data);
+//			mMainOutputStream = new Mp3FileReader(tmpStr);
+//			mVolumeStream = new WaveChannel32(mMainOutputStream);
+//			
+//			mWaveOutDevice = new WaveOut();
+//			mWaveOutDevice.Init(mVolumeStream);
+//			
+//			return true;
+//		}
+//		catch (System.Exception ex)
+//		{
+//			Debug.LogWarning("Error! " + ex.Message);
+//		}
+//		
+//		return false;
+//	}
 }
