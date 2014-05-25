@@ -5,10 +5,11 @@ public class PlayerLifeManager : MonoBehaviour
 {
 	public float life;
 	public PolygonCollider2D collider;
+	public GameObject manager;
 	// Use this for initialization
 	void Start ()
 	{
-
+		manager = GameObject.FindGameObjectWithTag("AudioManager");
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,9 @@ public class PlayerLifeManager : MonoBehaviour
 			StartCoroutine("Reload");
 			gameObject.renderer.enabled = false;
 			collider.enabled = false;
-			gameObject.GetComponent<ShipController>().enabled = false;
+			ShipController controller = gameObject.GetComponent<ShipController>();
+			controller.currentWeapon.SetActive(false);
+			controller.enabled = false;
 		}
 	}
 	
@@ -31,6 +34,7 @@ public class PlayerLifeManager : MonoBehaviour
 
 	IEnumerator Reload() {
 		yield return new WaitForSeconds(3f);
+		GameObject.Destroy(manager);
 		Application.LoadLevel("menu");
 	}
 }
