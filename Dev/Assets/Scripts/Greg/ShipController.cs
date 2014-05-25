@@ -14,6 +14,7 @@ public class ShipController : MonoBehaviour {
 	public GameObject[] walls;
 	public VisGameObjectPropertyModifier currentModifier;
 	public float score;
+	public Camera OrthographicCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -73,7 +74,7 @@ public class ShipController : MonoBehaviour {
 		if (gamepadList.Length == 0)
 		{
 			this.rigidbody2D.transform.Translate(xMove/2, yMove/2, 0, Space.World);
-			Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+			Vector3 diff = OrthographicCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 			diff.Normalize();
 			float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
