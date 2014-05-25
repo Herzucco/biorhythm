@@ -14,7 +14,11 @@ public class AudioManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
+		GameObject otherManager = GameObject.FindGameObjectWithTag("AudioManager");
+		if(otherManager && otherManager != gameObject){
+			clips = otherManager.GetComponent<AudioManager>().clips;
+			Destroy(otherManager);
+		}
 	}
 
 	// Update is called once per frame
@@ -27,8 +31,13 @@ public class AudioManager : MonoBehaviour
 	}
 
 	public AudioClip PickRandom(){
-		int index = Random.Range(0, clips.Count-1);
+		int index = Random.Range(0, clips.Count);
 		return clips[index];
+	}
+
+	public void ChangeMusic(){
+		source.clip = PickRandom();
+		source.Play();
 	}
 }
 

@@ -11,9 +11,11 @@ public class MenuButton : MonoBehaviour {
 	private List<AudioClip> clips;
 	// Use this for initialization
 	void Start () {
-		clips = new List<AudioClip>();
-		manager.clips = clips;
-		GetMusics();
+		if(manager.clips.Count <= 0){
+			clips = new List<AudioClip>();
+			manager.clips = clips;
+			GetMusics();
+		}
 	}
 	
 	// Update is called once per frame
@@ -22,7 +24,8 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	void OnClick() {
-		manager.clips = clips;
+		//manager.clips = clips;
+		manager.ChangeMusic();
 		Application.LoadLevel(levelName);
 	}
 
@@ -66,5 +69,6 @@ public class MenuButton : MonoBehaviour {
 
 		clip.name = Path.GetFileName(path);
 		clips.Add(clip);
+		Debug.Log(clips.Count);
 	}
 }

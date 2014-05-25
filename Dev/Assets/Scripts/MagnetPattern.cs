@@ -19,6 +19,7 @@ public class MagnetPattern : MonoBehaviour {
 	public List<MagnetPattern> otherChromosomes;
 	public GameObject player;
 	public bool isDead;
+
 	private Vector3 target;
 	private ShipController playerController;
 	// Use this for initialization
@@ -44,7 +45,7 @@ public class MagnetPattern : MonoBehaviour {
 		if(targetChromosome && !isAttached && !isFull && playerController.currentModifier){
 			float step = speed * playerController.currentModifier.brutValue * 10 * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
-		} else if(player && playerController.currentModifier){
+		} else if(player && playerController.enabled && playerController.currentModifier){
 			float distance = Vector3.Distance(transform.position, player.transform.position);
 			if(distance <= 10.0f){
 				target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
@@ -147,6 +148,7 @@ public class MagnetPattern : MonoBehaviour {
 		List<MagnetPattern> group;
 		if(isLeading){
 			group = leaded;
+			playerController.score += Mathf.Round(1 * group.Count *(playerController.currentModifier.brutValue * 100));
 			for(int i = 1; i < group.Count; i++){
 				group[0].leaded.Add(group[i]);
 				group[i].leader = group[0];
@@ -154,6 +156,7 @@ public class MagnetPattern : MonoBehaviour {
 		}
 		else if(isAttached){
 			group = leader.leaded;
+			playerController.score += Mathf.Round(1 * group.Count *(playerController.currentModifier.brutValue * 100));
 			for(int i = 0; i < group.Count; i++){
 				if(group[i].id == id){
 					group.RemoveAt(i);
@@ -162,6 +165,7 @@ public class MagnetPattern : MonoBehaviour {
 			}
 		}
 		if(!isAttached){
+			playerController.score += Mathf.Round(1 * otherChromosomes.Count *(playerController.currentModifier.brutValue * 100));
 			for(int i = 0; i < otherChromosomes.Count; i++){
 				if(otherChromosomes[i].id == id){
 					otherChromosomes.RemoveAt(i);
@@ -176,10 +180,6 @@ public class MagnetPattern : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		isAttached = true;
 		leader.leaded.Add(this);
-//		JoiningPattern join = gameObject.GetComponent<JoiningPattern>();
-//		join.UnJoin();
-//		transform.parent = leader.transform;
-//		join.enabled = false;
 		ClearLeaded(leader);
 	}
 }

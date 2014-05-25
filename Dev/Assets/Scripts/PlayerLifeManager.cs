@@ -34,7 +34,7 @@ public class PlayerLifeManager : MonoBehaviour
 
 	IEnumerator Reload() {
 		yield return new WaitForSeconds(3f);
-		GameObject.Destroy(manager);
+		//GameObject.Destroy(manager);
 		Application.LoadLevel("menu");
 	}
 }

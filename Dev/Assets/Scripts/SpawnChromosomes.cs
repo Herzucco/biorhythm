@@ -8,17 +8,18 @@ public class SpawnChromosomes : MonoBehaviour {
 	public float cooldown;
 	public Rect area;
 	public GameObject player;
-
+	private ShipController playerController;
 	private int nbChromosomes;
 	// Use this for initialization
 	void Start () {
+		playerController = player.GetComponent<ShipController>();
 		StartCoroutine(CheckChromosomes());
 		StartCoroutine(SpawnManagement());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		cooldown = Remap(playerController.currentModifier.brutValue, 0f, 1f, 1f, 0f);
 	}
 
 	public void SpawnChromosome(Vector3 position){
@@ -47,9 +48,24 @@ public class SpawnChromosomes : MonoBehaviour {
 
 	IEnumerator SpawnManagement() {
 		if(player){
-			float x = Random.Range(player.transform.position.x-20, player.transform.position.x+20);
-			float y = Random.Range(player.transform.position.y-20, player.transform.position.y+20);
-			
+			float x = player.transform.position.x;
+			float y = player.transform.position.y;
+
+			float count = 0;
+			while(IsBeetween(x, player.transform.position.x-2, player.transform.position.x+2) ||
+			      IsBeetween(y, player.transform.position.y-2, player.transform.position.y+2)){
+
+				x = Random.Range(area.xMin, area.xMax);
+				y = Random.Range(area.yMin, area.yMax);
+
+
+				count++;
+
+				if(count >= 20){
+					break;
+				}
+			}
+
 			Vector3 position = new Vector3(x, y, 0.0f);
 			SpawnChromosome(position);
 		}
@@ -57,5 +73,13 @@ public class SpawnChromosomes : MonoBehaviour {
 		yield return new WaitForSeconds(cooldown);
 
 		StartCoroutine("SpawnManagement");
+	}
+
+	public float Remap (float value, float from1, float to1, float from2, float to2) {
+		return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+	}
+
+	private bool IsBeetween(float value, float min, float max){
+		return (value >= min && value <= max);
 	}
 }
