@@ -31,7 +31,7 @@ public class PlayerLifeManager : MonoBehaviour
 
 	IEnumerator Reload() {
 		yield return new WaitForSeconds(3f);
-		Application.LoadLevel("ennemy");
+		Application.LoadLevel("menu");
 	}
 }
 
