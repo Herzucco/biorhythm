@@ -16,7 +16,9 @@ public class ShipController : MonoBehaviour {
 	public float score;
 	public Camera OrthographicCamera;
 	public GUIText ScoreLabel;
-
+	public PerlinShake shakeCamera;
+	public ParticleSystem particles;
+	public ParticleSystem particlesOwn;
 	// Use this for initialization
 	void Start () {
 	
@@ -34,6 +36,15 @@ public class ShipController : MonoBehaviour {
 		posClam.y = Mathf.Clamp(transform.position.y, walls[2].transform.position.y + walls[2].transform.localScale.y, walls[3].transform.position.y - walls[3].transform.localScale.y);
 		this.transform.position = posClam;
 		ScoreLabel.GetComponent<GUIText>().text = "Score :" + " " + score;
+
+		shakeCamera.speed =  (currentModifier.brutValue * 10)/2;
+		shakeCamera.magnitude = currentModifier.brutValue/2f;
+
+		particles.startSize = currentModifier.brutValue / 10;
+		particles.emissionRate = currentModifier.brutValue * 1000;
+
+		particlesOwn.startSize = currentModifier.brutValue / 10;
+		particlesOwn.emissionRate = currentModifier.brutValue * 100;
 
 	if (gamepadList.Length > 0)
 	{

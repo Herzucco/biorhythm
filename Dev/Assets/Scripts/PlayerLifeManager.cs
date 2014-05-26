@@ -29,6 +29,10 @@ public class PlayerLifeManager : MonoBehaviour
 
 				Instantiate(explosion, new Vector3(x, y, 0.0f), gameObject.transform.rotation);
 			}
+			controller.shakeCamera.test = true;
+			controller.shakeCamera.duration =  2;
+			controller.shakeCamera.speed =  20;
+			controller.shakeCamera.magnitude = 1;
 			life = -100f;
 		}
 	}
