@@ -10,8 +10,11 @@ public class SpawnChromosomes : MonoBehaviour {
 	public GameObject player;
 	private ShipController playerController;
 	private int nbChromosomes;
+
+	public static GameObject mainCamera;
 	// Use this for initialization
 	void Start () {
+		mainCamera = GameObject.FindGameObjectWithTag("TrueMainCamera");
 		playerController = player.GetComponent<ShipController>();
 		StartCoroutine(CheckChromosomes());
 		StartCoroutine(SpawnManagement());
