@@ -33,6 +33,7 @@ public class PlayerLifeManager : MonoBehaviour
 			controller.shakeCamera.duration =  2;
 			controller.shakeCamera.speed =  20;
 			controller.shakeCamera.magnitude = 1;
+			Destroy(controller.particlesOwn);
 			life = -100f;
 		}
 	}
