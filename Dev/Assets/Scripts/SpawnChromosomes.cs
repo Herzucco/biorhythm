@@ -19,7 +19,7 @@ public class SpawnChromosomes : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		cooldown = Remap(playerController.currentModifier.brutValue, 0f, 1f, 1f, 0f);
+		cooldown = Remap(playerController.currentModifier.brutValue, 0f, 1f, 1.5f, 0f);
 	}
 
 	public void SpawnChromosome(Vector3 position){

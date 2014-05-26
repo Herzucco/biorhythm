@@ -43,14 +43,14 @@ public class MagnetPattern : MonoBehaviour {
 		}
 
 		if(targetChromosome && !isAttached && !isFull && playerController.currentModifier){
-			float step = speed * playerController.currentModifier.brutValue * 10 * Time.deltaTime;
+			float step = speed * playerController.currentModifier.brutValue * 5 * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, targetChromosome.gameObject.transform.position, step);
 		} else if(player && playerController.enabled && playerController.currentModifier){
 			float distance = Vector3.Distance(transform.position, player.transform.position);
-			if(distance <= 10.0f){
+			if(distance <= 15.0f){
 				target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 			}
-			float step = speed * playerController.currentModifier.brutValue * 10 * Time.deltaTime;
+			float step = speed * playerController.currentModifier.brutValue * 5 * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
 		}
 	}
