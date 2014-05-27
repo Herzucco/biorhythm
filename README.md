@@ -26,4 +26,8 @@ Gameplay :
 Les ennemis et les tirs sont influencés par la musique de ta Playlist.
 Tu peux alterner entres différents types de beat, et choisir ainsi quelle partie de la musique influence le jeu (Bass, Mid, High).
 Si le beat choisi est lent, les ennemis et la cadence de tirs sera lente, et donc le jeu plutôt facile.
+<<<<<<< HEAD
 Mais si sur le beat devient plus important, les ennemis seront plus nombreux et rapides, et la cadence de tirs plus élevée, rendant le jeu plus difficile.
+=======
+Mais si sur le beat devient plus important, les ennemis seront plus nombreux et rapides, et la cadence de tirs plus élevée, rendant le jeu plus difficile.
+>>>>>>> 5e30db19a4722a278aead25b9f60e337beeaebb8
